@@ -1,0 +1,23 @@
+#map-canvas {
+	width:800px;
+	height:500px;
+	position: absolute;
+	top: 300px;
+	right: 100px;
+}
+
+iframe {
+	width:800px;
+	height: 500px;
+}
+
+.map {
+	position:absolute;
+	top: 225px;
+	right: 100px;
+}
+
+select {
+	clear: both;
+	left: 300px;
+}

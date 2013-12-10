@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>NYC Stop and Frisk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/menu-and-maps.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Evolution of Crime in NYC</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="http://efajardo.shinyapps.io/dataScience/">More Analysis</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h1>NYC Stop and Frisk Data Analyzed</h1>
+      <p>
+        This page shows the Basic, Advanced and Radical analysis, and the predictive visualizations of the analysis.
+        <br>
+        Choose the kind of thematic information you would like to visualize and click through!
+      </p>
+
+
+       <select id="analysis" onchange="fctCheck(this.value);">
+      <option value="">Choose the level of analysis</option>
+      <option value="basic">Basic</option>
+      <option value="advanced">Advanced</option>
+      <option value="radical">Radical</option>
+    </select>
+
+    <select id="basic" onchange="fctCheck_sub(this.value);" name="subselector" style="display:none">
+            <option>Choose Category</option>
+        <option value="yearly_contour">Year-Wise Contour Maps</option>
+        <option value="yearly_heatmap">Year-Wise Heat Maps</option>
+        <option value="yearly_count">Year-Wise Counts</option>
+    </select>
+
+    <select id="yearly_contour" name="subsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_contour">2006</option>
+            <option value="2008_contour">2008</option>
+        </select>
+
+        <select id="yearly_heatmap" name="subsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_heat">2006</option>
+            <option value="2008_heat">2008</option>
+        </select>
+
+        <select id="yearly_count" name="subsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_count">2006</option>
+            <option value="2008_count">2008</option>
+        </select>
+
+    <select id="advanced" onchange="fctCheck_sub(this.value);" name="subselector" style="display:none">
+      <option>Choose Factor</option>
+        <option value="population">Population Density</option>
+        <option value="income">Income</option>
+        <option value="education">Education</option>
+    </select> 
+
+    <select id="population" onchange="fctCheck_sub_sub(this.value);" name="subsubselector" style="display:none">
+            <option>Choose Population Group</option>
+            <option value="pop_aggregate">Aggregate</option>
+            <option value="pop_asian">Asian</option>
+            <option value="pop_black">Black</option>
+            <option value="pop_hispanic">Hispanic</option>
+            <option value="pop_white">White</option>
+        </select>
+
+        <select id="pop_aggregate" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="agg_pop_counts">Population by Sub-Borough</option>
+            <option value="agg_pop_ratio">Stop and Frisk v/s Population</option>
+        </select>
+
+        <select id="agg_pop_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_pop_agg">2006</option>
+            <option value="2008_pop_agg">2008</option>
+        </select>
+
+        <select id="agg_pop_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_pop_agg">2006</option>
+            <option value="2008_sf_pop_agg">2008</option>
+        </select>
+
+        <select id="pop_asian" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="asian_pop_counts">Asian Population by Sub-Borough</option>
+            <option value="asian_pop_ratio">Stop and Frisk v/s Asian Population</option>
+        </select>
+
+        <select id="asian_pop_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_pop_asian">2006</option>
+            <option value="2008_pop_asian">2008</option>
+        </select>
+
+        <select id="asian_pop_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_pop_asian">2006</option>
+            <option value="2008_sf_pop_asian">2008</option>
+        </select>        
+
+        <select id="pop_black" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="black_pop_counts">Black Population by Sub-Borough</option>
+            <option value="black_pop_ratio">Stop and Frisk v/s Black Population</option>
+        </select>
+
+        <select id="black_pop_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_pop_black">2006</option>
+            <option value="2008_pop_black">2008</option>
+        </select>
+
+        <select id="black_pop_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_pop_black">2006</option>
+            <option value="2008_sf_pop_black">2008</option>
+        </select> 
+
+        <select id="pop_hispanic" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="hispanic_pop_counts">Hispanic Population by Sub-Borough</option>
+            <option value="hispanic_pop_ratio">Stop and Frisk v/s Hispanic Population</option>
+        </select>
+
+        <select id="hispanic_pop_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_pop_hispanic">2006</option>
+            <option value="2008_pop_hispanic">2008</option>
+        </select>
+
+        <select id="hispanic_pop_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_pop_hispanic">2006</option>
+            <option value="2008_sf_pop_hispanic">2008</option>
+        </select> 
+
+        <select id="pop_white" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="white_pop_counts">White Population by Sub-Borough</option>
+            <option value="white_pop_ratio">Stop and Frisk v/s White Population</option>
+        </select>
+
+        <select id="white_pop_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_pop_white">2006</option>
+            <option value="2008_pop_white">2008</option>
+        </select>
+
+        <select id="white_pop_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_pop_white">2006</option>
+            <option value="2008_sf_pop_white">2008</option>
+        </select> 
+
+        <select id="income" onchange="fctCheck_sub_sub(this.value);" name="subsubselector" style="display:none">
+            <option>Choose Income Group</option>
+            <option value="income_aggregate">Aggregate</option>
+            <option value="income_asian">Asian</option>
+            <option value="income_black">Black</option>
+            <option value="income_hispanic">Hispanic</option>
+            <option value="income_white">White</option>
+        </select>
+
+        <select id="income_aggregate" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="agg_income_counts">Income by Sub-Borough</option>
+            <option value="agg_income_ratio">Stop and Frisk v/s Income</option>
+        </select>
+
+        <select id="agg_income_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_income_agg">2006</option>
+            <option value="2008_income_agg">2008</option>
+        </select>
+
+        <select id="agg_income_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_income_agg">2006</option>
+            <option value="2008_sf_income_agg">2008</option>
+        </select>
+
+        <select id="income_asian" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="asian_income_counts">Income by Sub-Borough</option>
+            <option value="asian_income_ratio">Stop and Frisk v/s Income</option>
+        </select>
+
+        <select id="asian_income_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_income_asian">2006</option>
+            <option value="2008_income_asian">2008</option>
+        </select>
+
+        <select id="asian_income_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_income_asian">2006</option>
+            <option value="2008_sf_income_asian">2008</option>
+        </select>
+
+    <select id="income_black" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="black_income_counts">Income by Sub-Borough</option>
+            <option value="black_income_ratio">Stop and Frisk v/s Income</option>
+        </select>
+
+        <select id="black_income_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_income_black">2006</option>
+            <option value="2008_income_black">2008</option>
+        </select>
+
+        <select id="black_income_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_income_black">2006</option>
+            <option value="2008_sf_income_black">2008</option>
+        </select>
+
+        <select id="income_hispanic" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="hispanic_income_counts">Income by Sub-Borough</option>
+            <option value="hispanic_income_ratio">Stop and Frisk v/s Income</option>
+        </select>
+
+        <select id="hispanic_income_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_income_hispanic">2006</option>
+            <option value="2008_income_hispanic">2008</option>
+        </select>
+
+        <select id="hispanic_income_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_income_hispanic">2006</option>
+            <option value="2008_sf_income_hispanic">2008</option>
+        </select>
+
+        <select id="income_white" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="white_income_counts">Income by Sub-Borough</option>
+            <option value="white_income_ratio">Stop and Frisk v/s Income</option>
+        </select>
+
+        <select id="white_income_counts" onchange="bringToTop(this.value)" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_income_white">2006</option>
+            <option value="2008_income_white">2008</option>
+        </select>
+
+        <select id="white_income_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_income_white">2006</option>
+            <option value="2008_sf_income_white">2008</option>
+        </select>
+
+    <select id="education" onchange="fctCheck_sub_sub(this.value);" name="subsubselector" style="display:none">
+            <option>Choose Education</option>
+            <option value="bachelors">Bachelors</option>
+            <option value="highschool">No High School</option>
+        </select>
+
+        <select id="bachelors" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="bachelors_counts">Bachelors Education by Sub-Borough</option>
+            <option value="bachelors_ratio">Stop and Frisk v/s Bachelors Education</option>
+        </select>
+
+        <select id="bachelors_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_edu_bach">2006</option>
+            <option value="2008_edu_bach">2008</option>
+        </select>
+
+         <select id="bachelors_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_edu_bach">2006</option>
+            <option value="2008_sf_edu_bach">2008</option>
+        </select>
+
+        <select id="highschool" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="hs_counts">No High School Education by Sub-Borough</option>
+            <option value="hs_ratio">Stop and Frisk v/s No High School Education</option>
+        </select>
+
+    <select id="hs_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_edu_hs">2006</option>
+            <option value="2008_edu_hs">2008</option>
+        </select>
+
+        <select id="hs_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_edu_hs">2006</option>
+            <option value="2008_sf_edu_hs">2008</option>
+        </select>
+
+    <select id="radical" onchange="fctCheck_sub(this.value);" name="subselector" style="display:none">
+      <option>Choose Category</option>
+        <option value="pet_ownership">Pet Ownership</option>
+        <option value="apartment_rents">Apartment Rents</option>
+        <option value="predictions">Predictions</option>
+    </select>
+
+    <select id="pet_ownership" name="subsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="pet_ownership_count">Pet Ownership by Zip-Code</option>
+            <option value="pet_ownership_ratio">Stop-and-Frisks v/s Pet Ownership</option>
+        </select>
+
+        <select id="apartment_rents" onchange="fctCheck_sub_sub(this.value);" name="subsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="apartment_rents_count">Apartment Rents by Zip-Code</option>
+            <option value="apartment_rents_ratio">Stop-and-Frisks v/s Apartment Rents</option>
+        </select>
+
+    <select id="apartment_rents_ratio" name="subsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_apartment_rents_ratio">2006</option>
+            <option value="2008_apartment_rents_ratio">2008</option>
+        </select>
+
+    <select id="apartment_rents_count" name="subsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_apartment_rents_count">2006</option>
+            <option value="2008_apartment_rents_count">2008</option>
+        </select>    
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
+    <script src="js/menu-and-maps.js"></script>
+
+     
+
+<div id="map-canvas"></div>
+
+    <div id="2007heatmapdiv" class="map">
+      <iframe src="https://www.google.com/fusiontables/embedviz?q=select+col0+from+1h6KB4isFOPlti3aSsxQUxM1v3GdDorFpj6Mrs1c&amp;viz=MAP&amp;h=false&amp;lat=40.73844565530461&amp;lng=-73.95242245675001&amp;t=1&amp;z=11&amp;l=col0" ></iframe>
+    </div>
+
+    <div id="2009heatmapdiv" class="map">
+      <iframe src="https://www.google.com/fusiontables/embedviz?q=select+col6+from+1iAFtEhPWygfAx4uE4f-QJdIDeRzkT9coLqjdbfU&amp;viz=MAP&amp;h=false&amp;lat=40.70626408827347&amp;lng=-73.97783650000002&amp;t=1&amp;z=10&amp;l=col6&amp;y=3&amp;tmplt=3&amp;hml=KML" ></iframe>
+    </div>
+
+    <!------------------------------ COUNTS --------------------------------------->
+    <!-- 2006 -->
+    <div id="2006_count" >
+    </div>
+
+    <!-- 2008 -->
+    <div id="2008_count" >
+    </div>
+
+    <!------------------------------ HEATMAP --------------------------------------->
+    <!-- 2006 -->
+    <div id="2006_heat" >
+    </div>
+
+    <!-- 2008 -->
+    <div id="2008_heat" >
+    </div>
+
+    <!------------------------------ CONTOUR --------------------------------------->
+    <!-- 2006 -->
+    <div id="2006_contour" >
+    </div>
+
+    <!-- 2008 -->
+    <div id="2006_contour" >
+    </div>
+
+
+    <!------------------------------ POPULATION --------------------------------------->
+
+    <!------------ ASIAN ----------->
+    <!-- RATIO POP ASIAN 2006 -->
+    <div id="2006_sf_pop_asian" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1OlAFLtik4wMd1Dsy1BpDgr0ANSBHX173W3STu8Q&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO POP ASIAN 2008 -->
+    <div id="2008_sf_pop_asian" class="map" >
+      <class="map"scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1goR3alYASAP7jWhjOwz8JOZoUZJXJfiePJqlgpQ&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS POP ASIAN 2006 -->
+    <div id="2006_pop_asian" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1jOq0yPtSkLp7iC5HhXC9JHkM1NOralnQlL5Tlfs&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS POP ASIAN 2008 -->
+    <div id="2008_pop_asian" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1ZFpmR8LMsvV0BB6nQC-3dBa5DInSPgYALFh8xEU&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>    
+
+    <!------------ BLACK ----------->
+    <!-- RATIO POP BLACK 2006 -->
+    <div id="2006_sf_pop_black" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+11Y91gV9zFwmsp5rjSIo2y1q4ucZRzudzkpOnPQk&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO POP BLACK 2008 -->
+    <div id="2008_sf_pop_black" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1EKmZ09mctIPBvWL_nQOdzdJLOzff4TJuZ8jm_aI&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS POP BLACK 2006 -->
+    <div id="2006_pop_black" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1cGGX8j-mbsKtC-WK2_0tu1ppkJ8EmVSHrWKm6H0&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS POP BLACK 2008 -->
+    <div id="2008_pop_black" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1K2ac1KPIxN-2l8XqIrnWgUF7Gq-TJpWDBVt5ULw&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>    
+
+    <!------------ HISPANIC ----------->
+    <!-- RATIO POP HISPANIC 2006 -->
+    <div id="2006_sf_pop_hispanic" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1JoL8Biy_BIr7Km-JG9ijSjNf8tCEN4Msa9k87-8&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO POP HISPANIC 2008 -->
+    <div id="2008_sf_pop_hispanic" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1FL7pvOW7AdTlALujTW3wvyGkEja5MFWLnpuPPMM&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS POP HISPANIC 2006 -->
+    <div id="2006_pop_hispanic" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1Oz18CuAuEX8wYO4uL6pkUi8GpN6mcgKoLTKmmyQ&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS POP HISPANIC 2008 -->
+    <div id="2008_pop_hispanic" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+12UA9xFohtrwitJWGupsc3Xp8WLendKjtcsq-Ru0&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>        
+
+    <!------------ WHITE ----------->
+    <!-- RATIO POP WHITE 2006 -->
+    <div id="2006_sf_pop_white" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1G4J_pjbdSk2OEdKUbMqeFMnKePBXVkLq2IRDGco&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO POP WHITE 2008 -->
+    <div id="2008_sf_pop_white" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1PeV46pPW_w8fp5cSRUg8NQGecBuSdAba6xbe--w&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS POP WHITE 2006 -->
+    <div id="2006_pop_white" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+11RacjAQvpH4QH_qwW6golnLA9NByHC6wZnYoGus&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS POP WHITE 2008 -->
+    <div id="2008_pop_white" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+14u5WN10t3ZtzyonQ_dYzArRAd5d5SpF4nCCXFvI&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+
+    <!------------------------------ INCOMES --------------------------------------->
+
+    <!------------ ASIAN ----------->
+    <!-- RATIO INCOME ASIAN 2006 -->
+    <div id="2006_sf_income_asian" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1n3m6d0os6nY01KMHsQWBwpN5LXApLN3va-oyjaA&amp;viz=MAP&amp;h=false&amp;lat=40.79185111046969&amp;lng=-73.96333044433595&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO INCOME ASIAN 2008 -->
+    <div id="2008_sf_income_asian" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1w8AGihRMlu3Iywx-Vy3erLHpS1RrXkwAcDa43TY&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS INCOME ASIAN 2006 -->
+    <div id="2006_income_asian" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+16QovUhhKi7eHlKQxCTEfxfI6EPvFQZizZBKAqzA&amp;viz=MAP&amp;h=false&amp;lat=40.70549976423307&amp;lng=-73.96333044433595&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS INCOME ASIAN 2008 -->
+    <div id="2008_income_asian" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1c0VAbBdDvsYRUyyjS4qFTzjwWkuaba1656rgxhg&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>    
+
+    <!------------ BLACK ----------->
+    <!-- RATIO INCOME BLACK 2006 -->
+    <div id="2006_sf_income_black" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1H8D4sG_ZNCCpfh-UjjL4lJyKfmtW-kAucTooBBU&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO INCOME BLACK 2008 -->
+    <div id="2008_sf_income_black" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1D-PEco_6YYdxRVp5OGjFsqn7wIqU6Iq-hqkleRE&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS INCOME BLACK 2006 -->
+    <div id="2006_income_black" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1EqtddlDhIhSYgCPS43HMsX1sZ-eY1_O7-QVO0No&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS INCOME BLACK 2008 -->
+    <div id="2008_income_black" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1NHO0y--B_u1Dpe_Wxg7N65Q0vloifoL8Yl403nA&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>    
+
+    <!------------ HISPANIC ----------->
+    <!-- RATIO INCOME HISPANIC 2006 -->
+    <div id="2006_sf_income_hispanic" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+195XdVVWdj2g_VikUiH3dBvGLxv-LEKp7W2sbt88&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO INCOME HISPANIC 2008 -->
+    <div id="2008_sf_income_hispanic" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1A0z69G4ykUWZGdlXOZOHOOQnfM961WrZafQF62s&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS INCOME HISPANIC 2006 -->
+    <div id="2006_income_hispanic" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1UxjYo3clfMtG6FAfnW3o901X95TWKrSCUEdJHCk&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS INCOME HISPANIC 2008 -->
+    <div id="2008_income_hispanic" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+136XRS7a58m1lXR1Uhi8qq_mmBSXGz2DGl_Cefqk&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>        
+
+    <!------------ WHITE ----------->
+    <!-- RATIO INCOME WHITE 2006 -->
+    <div id="2006_sf_income_white" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1ceHGGqvSUBXSCKlDzghuKLL1gwEdeWAcnFfQodo&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO INCOME WHITE 2008 -->
+    <div id="2008_sf_income_white" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1ceHGGqvSUBXSCKlDzghuKLL1gwEdeWAcnFfQodo&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS INCOME WHITE 2006 -->
+    <div id="2006_income_white" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1mP79GKQ4oGl_ryp4WBmIcNyt18lxqeETJSasg4M&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS INCOME WHITE 2008 -->
+    <div id="2008_income_white" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1E7BEO-Z_haVqEjeWg4iIZzHyv2ZjIxIrXh4i7h8&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!------------------------------ EDUCATION --------------------------------------->
+    <!------------ BACHELORS ----------->
+    <!-- RATIO EDUCATION BACHELORS 2006 -->
+    <div id="2006_sf_edu_bach" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col13+from+1linmULwmrYL3mmfpYiG2CZXQtOgcxctCAIMlhSg&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col13&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS EDUCATION BACHELORS 2006 -->
+    <div id="2006_edu_bach" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col13+from+1D_Q46jq5043bYOPvy5RHrx-PDl_N4GZQofQNMow&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col13&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO EDUCATION BACHELORS 2008 -->
+    <div id="2008_sf_edu_bach" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col13+from+1WCLPZdEMyNIKkDz97EHK0JHsOxUc3iqEuxzFZg8&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col13&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS EDUCATION BACHELORS 2008 -->
+    <div id="2008_edu_bach" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col13+from+1r5980-pWSHsoD-QnemG_BQfJL4KaGGDpzU7n_2U&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col13&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!------------ HIGH SCHOOL ----------->
+    <!-- RATIO EDUCATION HIGH SCHOOL 2006 -->
+    <div id="2006_sf_edu_hs" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+17H2W1DLQ0Mf3h61Y36cDoqMTU3xQ7JtabcTUx8s&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS EDUCATION HIGH SCHOOL 2006 -->
+    <div id="2006_edu_hs" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+1ndaNNdtlJvUGURDAifZNLdr8Mv_5LTrdnVHZqJE&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- RATIO EDUCATION HIGH SCHOOL 2008 -->
+    <div id="2008_sf_edu_hs" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+17uqkMJ4nf0BHeUEQ5pLohKmRPFB1zOEjUMcBjiU&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- COUNTS EDUCATION HIGH SCHOOL 2008 -->
+    <div id="2008_edu_hs" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+1Inx7hjLSFhp4rEt038dDZAP7fBS9e2Z1LUM9aPc&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+
+    <!------------------------------ PET OWNERSHIP --------------------------------------->
+    <!-- COUNT -->
+    <div id="pet_ownership_count" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+1VTFs6OGmxOZDsA7dOxVSmZjXRFHrz2U-id41VHY&amp;viz=MAP&amp;h=false&amp;lat=40.70593556790938&amp;lng=-73.97808349999997&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=GEOCODABLE"></iframe>
+    </div>
+
+    <!-- RATIO -->
+    <div id="pet_ownership_ratio" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+1uO5eBwMb8aojD-ZDtB_ByFHObVZNrL-5rDiMNPY&amp;viz=MAP&amp;h=false&amp;lat=40.70593556790938&amp;lng=-73.97808349999997&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!------------------------------ APARTMENT RENT --------------------------------------->
+    <!------------ COUNTS ----------->
+    <!-- 2006 -->
+    <div id="2006_apartment_rents_count" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1ObpWBmMKhCLOhyD22UlN1IiNO9yZoRpEaXBHmRU&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- 2008 -->
+    <div id="2008_apartment_rents_count" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1OHKK3cf07Q6s0RMU91Xf3l0eCGcx1G7-GSroZtY&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!------------ RATIO ----------->
+    <!-- 2006 -->
+    <div id="2006_apartment_rents_ratio" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1lkG6aP-h21lww10FxKk6XCYfzjgScIYoPT6vsn8&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!-- 2008 -->
+    <div id="2008_apartment_rents_ratio" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+11Laou6ZPwzPQLqPgn2PTjglmSov5-VorR3JBrCM&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+    <!------------ PREDICTIONS --------- -->
+    <div id="predictions" class="map" >
+      <iframe scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col18+from+1EXxvYw9BTogHNwAsBo_D6IDNVhe7OsoIM9tUDtE&amp;viz=MAP&amp;h=false&amp;lat=40.706182345738206&amp;lng=-73.97808349999997&amp;t=1&amp;z=10&amp;l=col18&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+    </div>
+
+
+  </body>
+</html>
