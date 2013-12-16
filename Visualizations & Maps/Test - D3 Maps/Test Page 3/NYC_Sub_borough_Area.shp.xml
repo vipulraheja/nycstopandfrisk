@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Electronic Data Services (EDS), Columbia University Libraries</origin>
+				<pubdate>2004</pubdate>
+				<title>New York City Sub-borough Area</title>
+				<geoform>vector digital data</geoform>
+				<onlink>http://www.columbia.edu/acis/eds/gis/images/NYC_Sub_borough_Area.zip</onlink>
+			</citeinfo>
+		</citation>
+		<descript>
+			<abstract>All sub-borough areas for the five boroughs of New York City with names and codes matching definitions from the US Census.</abstract>
+			<purpose>For use in conjunction with data from the New York Housing and Vacancy Survey</purpose>
+		</descript>
+		<timeperd>
+			<timeinfo>
+				<sngdate>
+					<caldate>2004</caldate>
+				</sngdate>
+			</timeinfo>
+			<current>2002</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>None planned</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc>-73.933406</westbc>
+				<eastbc>-73.765101</eastbc>
+				<northbc>40.915278</northbc>
+				<southbc>40.785680</southbc>
+			</bounding>
+		</spdom>
+		<keywords>
+			<theme>
+				<themekey>Sub-borough boundary</themekey>
+				<themekey>New York City Housing and Vacancy Survey</themekey>
+			</theme>
+			<theme>
+				<themekt>None</themekt>
+			</theme>
+			<theme>
+				<themekt>ISO 19115 Topic Category</themekt>
+				<themekey>Boundaries</themekey>
+			</theme>
+			<place>
+				<placekey>New York City</placekey>
+			</place>
+			<place>
+				<placekt>None</placekt>
+			</place>
+		</keywords>
+		<accconst>None</accconst>
+		<useconst>None</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Electronic Data Services (EDS), Columbia University Libraries</cntorg>
+				</cntorgp>
+			</cntinfo>
+		</ptcontac>
+		<native>Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 2; ESRI ArcCatalog 9.1.0.780</native>
+		<browse><browsen>http://www.columbia.edu/acis/eds/gis/pix/cat/NYC_Sub_borough_Area0.bmp</browsen><browsed>Thumbnail image of shapefile in full extent</browsed><browset>BMP</browset></browse></idinfo>
+	<dataqual>
+		<lineage>
+			<procstep>
+				<procdesc>
+Spatial files were originally obtained from the US Census Bureau's 2000 TIGER/Line tracts for the five boroughs for New York City.  Using definitions from the NYCHVS (http://www.census.gov/hhes/www/housing/nychvs/nychvs.html), tracts were selected, tract boundaries dissolved, and information added manually.
+EDS takes no responsibility for the accuracy of the spatial file.
+</procdesc>
+			</procstep>
+			<procstep><procdesc>These features were clipped from the New York State TIGER file.</procdesc></procstep><procstep><procdesc>The dataset projection was updated to the Lambert Conformal Conic projection.</procdesc><procdate>20070326</procdate></procstep><procstep>
+				<procdesc>Dataset moved.</procdesc>
+				<srcused>E:\work\Files for N drive\new_york\nyc_census\nyc_census_boundaries\NYC_Sub_borough_Area</srcused>
+				<time>11195300</time>
+			</procstep>
+			<procstep>
+				<procdesc>Dataset copied.</procdesc>
+				<srcused></srcused>
+				<time>11132100</time>
+			</procstep>
+			<procstep><procdesc>The dataset projection was updated to the Lambert Conformal Conic projection.</procdesc><proctime>20070327</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<direct>Vector</direct>
+		<ptvctinf>
+			<sdtsterm>
+				<sdtstype>G-polygon</sdtstype>
+				<ptvctcnt>55</ptvctcnt>
+			</sdtsterm>
+		</ptvctinf>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<planar>
+				<mapproj>
+					<mapprojn>Lambert Conformal Conic</mapprojn>
+					<lambertc>
+						<stdparll>40.666667</stdparll>
+						<stdparll>41.033333</stdparll>
+						<longcm>-74.000000</longcm>
+						<latprjo>40.166667</latprjo>
+						<feast>984250.000000</feast>
+						<fnorth>0.000000</fnorth>
+					</lambertc>
+				</mapproj>
+				<planci>
+					<plance>coordinate pair</plance>
+					<coordrep>
+						<absres>0.000256</absres>
+						<ordres>0.000256</ordres>
+					</coordrep>
+					<plandu>survey feet</plandu>
+				</planci>
+			</planar>
+			<geodetic>
+				<horizdn>North American Datum of 1983</horizdn>
+				<ellips>Geodetic Reference System 80</ellips>
+				<semiaxis>6378137.000000</semiaxis>
+				<denflat>298.257222</denflat>
+			</geodetic>
+		</horizsys>
+	</spref>
+	<eainfo>
+		<detailed>
+			<enttyp>
+				<enttypl>NYC_Sub_borough_Area_shp</enttypl>
+			</enttyp>
+			<attr>
+				<attrlabl>FID</attrlabl>
+				<attrdef>Internal feature number.</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Sequential unique whole numbers that are automatically generated.</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>Shape</attrlabl>
+				<attrdef>Feature geometry.</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Coordinates defining the features.</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>bor_subb</attrlabl>
+				<attrdef>Borough / sub-borough code</attrdef>
+				<attrdefs>US Census Bureau - NYCHVS</attrdefs>
+			</attr>
+			<attr>
+				<attrlabl>NAME</attrlabl>
+				<attrdef>Sub-borough name</attrdef>
+				<attrdefs>US Census Bureau - NYCHVS</attrdefs>
+			</attr>
+		</detailed>
+	</eainfo>
+	<distinfo>
+		<resdesc>CENSUS_2000_032807211977000</resdesc>
+	</distinfo>
+	<metainfo>
+		<metd>20070327</metd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Electronic Data Service (EDS), Columbia University Libraries</cntorg>
+					<cntper>GIS/Metadata Librarian</cntper>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>420 W. 118th St.</address>
+					<address>215 IAB, MC 3301</address>
+					<city>New York</city>
+					<state>NY</state>
+					<postal>10027</postal>
+				</cntaddr>
+				<cntvoice>(212)854-6012</cntvoice>
+				<cntemail>eds@columbia.edu</cntemail>
+			</cntinfo>
+		</metc>
+		<metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv>FGDC-STD-001-1998</metstdv>
+		<mettc>local time</mettc>
+	</metainfo>
+	<Esri><ModDate>20070402</ModDate><ModTime>16013200</ModTime></Esri><mdDateSt Sync="TRUE">20070402</mdDateSt></metadata>

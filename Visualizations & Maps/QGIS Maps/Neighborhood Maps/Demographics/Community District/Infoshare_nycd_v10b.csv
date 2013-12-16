@@ -1,0 +1,72 @@
+"BoroCD,N,4,0","MapID,C,6","AREANAME,C,33"
+101,301,MN1 - Financial District
+102,302,MN2 - Greenwich Village/Soho
+103,303,MN3 - Lower East Side/Chinatown
+104,304,MN4 - Clinton/Chelsea
+105,305,MN5 - Midtown
+106,306,MN6 - Stuyvesant Town/Turtle Bay
+107,307,MN7 - Upper West Side
+108,308,MN8 - Upper East Side
+109,309,MN9 - Morningside Heights/Hamilto
+110,310,MN10 - Central Harlem
+111,311,MN11 - East Harlem
+112,312,MN12 - Washington Heights/Inwood
+164,0,Central Park
+201,101,BX1 - Mott Haven/Melrose
+202,102,BX2 - Hunts Point/Longwood
+203,103,BX3 - Morrisania/Crotona
+204,104,BX4 - Highbridge/Concourse
+205,105,BX5 - Fordham/University Heights
+206,106,BX6 - Belmont/East Tremont
+207,107,BX7 - Kingsbridge Hghts/Bedford P
+208,108,BX8 - Riverdale/Fieldston
+209,109,BX9 - Parkchester/Soundview
+210,110,BX10 - Throgs Neck/Co-op City
+211,111,BX11 - Morris Park/Bronxdale
+212,112,BX12 - Williamsbridge/Baychester
+226,0,Van Cortlandt Park
+227,0,Bronx Park
+228,0,Pelham Bay Park
+301,201,BK1 - Greenpoint/Williamsburg
+302,202,BK2 - Fort Greene/Brooklyn Height
+303,203,BK3 - Bedford Stuyvesant
+305,205,BK5 - East New York/Starrett City
+306,206,BK6 - Park Slope/Carroll Gardens
+307,207,BK7 - Sunset Park
+308,208,BK8 - Crown Heights
+309,209,BK9 - South Crown Heights/Prospec
+310,210,BK10 - Bay Ridge/Dyker Heights
+311,211,BK11 - Bensonhurst
+312,212,BK12 - Borough Park
+313,213,BK13 - Coney Island
+314,214,BK14 - Flatbush/Midwood
+315,215,BK15 - Sheepshead Bay
+316,216,BK16 - Brownsville
+317,217,BK17 - East Flatbush
+318,218,BK18 - Flatlands/Canarsie
+355,0,Prospect Park
+356,0,Floyd Bennet Field
+401,401,QU1 - Astoria
+402,402,QU2 - Woodside/Sunnyside
+403,403,QU3 - Jackson Heights
+404,404,QU4 - Elmhurst/Corona
+405,405,QU5 - Ridgewood/Maspeth
+406,406,QU6 - Rego Park/Forest Hills
+407,407,QU7 - Flushing/Whitestone
+408,408,QU8 - Hillcrest/Fresh Meadows
+409,409,QU9 - Ozone Park/Woodhaven
+410,410,QU10 - S. Ozone Park/Howard Beach
+411,411,QU11 - Bayside/Little Neck
+412,412,QU12 - Jamaica/Hollis
+413,413,QU13 - Queens Village
+414,414,QU14 - Rockaway/Broad Channel
+480,0,La Guardia Airport
+481,0,Flushing Medows Corona Park
+482,0,Forest Park
+483,0,JFK International Airport
+484,0,
+501,501,SI1 - St. George/Stapleton
+502,502,SI2 - S. Beach/Willowbrook
+503,503,SI3 - Tottenville/Great Kills
+595,0,
+304,204,BK4 - Bushwick

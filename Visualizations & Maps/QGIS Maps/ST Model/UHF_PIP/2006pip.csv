@@ -1,0 +1,44 @@
+OBJECTID,UHFCODE,UHF_NEIGH,BOROUGH,Neighbors,PNTCNT
+1,0,,N/A,"302,303,304,305,306,307,401,402,407,408,409,410",1050
+2,101,Kingsbridge - Riverdale,Bronx,"102,103,105,301",2274
+3,102,Northeast Bronx,Bronx,"101,103,104",6474
+4,103,Fordham - Bronx Park,Bronx,"101,102,104,105",8943
+5,104,Pelham - Throgs Neck,Bronx,"102,103,105,107",12612
+6,105,Crotona - Tremont,Bronx,"101,103,104,106,107,301",11255
+7,106,High Bridge - Morrisania,Bronx,"105,107",16080
+8,107,Hunts Point - Mott Haven,Bronx,"104,105,106,303",16332
+9,201,Greenpoint,Brooklyn,"202,211,401,402,405",6873
+10,202,Downtown  - Heights - Slope,Brooklyn,"201,203,205,206,207,211",15498
+11,203,Bedford Stuyvesant - Crown Heights,Brooklyn,"202,204,207,208,211",50635
+12,204,East New York,Brooklyn,"203,208,211,405,407",31026
+13,205,Sunset Park,Brooklyn,"202,206,209",4865
+14,206,Borough Park,Brooklyn,"202,205,207,209,210",6420
+15,207,East Flatbush - Flatbush,Brooklyn,"202,203,206,208,210",17133
+16,208,Canarsie - Flatlands,Brooklyn,"203,204,207,210,407",9218
+17,209,Bensonhurst - Bay Ridge,Brooklyn,"205,206,210",4628
+18,210,Coney Island - Sheepshead Bay,Brooklyn,"206,207,208,209",11699
+19,211,Williamsburg - Bushwick,Brooklyn,"201,202,203,204,402,405",16447
+20,301,Washington Heights - Inwood,Manhattan,"101,105,302",16663
+21,302,Central Harlem - Morningside Heights,Manhattan,"0,301,303,304",30186
+22,303,East Harlem,Manhattan,"0,107,302,305",21424
+23,304,Upper West Side,Manhattan,"0,302,306",7260
+24,305,Upper East Side,Manhattan,"0,303,306,307",5790
+25,306,Chelsea - Clinton,Manhattan,"0,304,305,307,308,309",14793
+26,307,Gramercy Park -  Murray Hill,Manhattan,"0,305,306,309",4358
+27,308,Greenwich Village - Soho,Manhattan,"306,309,310",4364
+28,309,Union Square - Lower East Side,Manhattan,"306,307,308,310",10228
+29,310,Lower Manhattan,Manhattan,"308,309",2069
+30,401,Long Island City - Astoria,Queens,"0,201,402",9865
+31,402,West Queens,Queens,"0,201,211,401,403,405",22078
+32,403,Flushing - Clearview,Queens,"402,404,405,406",6502
+33,404,Bayside - Little Neck,Queens,"403,406,408,409",3251
+34,405,Ridgewood - Forest Hills,Queens,"201,204,211,402,403,406,407",9228
+35,406,Fresh Meadows,Queens,"403,404,405,407,408,409",2739
+36,407,Southwest Queens,Queens,"0,204,208,405,406,408",9432
+37,408,Jamaica,Queens,"0,404,406,407,409",28205
+38,409,Southeast Queens,Queens,"0,404,406,408",10805
+39,410,Rockaway,Queens,0,9243
+40,501,Port  Richmond,Staten Island,"502,503",3991
+41,502,Stapleton - St. George,Staten Island,"501,503,504",7135
+42,503,Willowbrook,Staten Island,"501,502,504",2089
+43,504,South Beach - Tottenville,Staten Island,"502,503",4940

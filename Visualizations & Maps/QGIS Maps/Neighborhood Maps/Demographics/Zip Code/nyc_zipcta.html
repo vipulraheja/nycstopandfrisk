@@ -1,0 +1,1124 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JScript"><!--
+
+function test() {
+  var ua = window.navigator.userAgent
+  var msie = ua.indexOf ( "MSIE " )
+  if ( msie == -1 ) 
+    document.write("<P>" + "Netscape")
+}
+
+      function fix(e) {
+        var par = e.parentNode;
+        e.id = "";
+        e.style.marginLeft = "0.42in";
+        var pos = e.innerText.indexOf("\n");
+        if (pos > 0) {
+          while (pos > 0) {
+            var t = e.childNodes(0);
+            var n = document.createElement("PRE");
+            var s = t.splitText(pos);
+            e.insertAdjacentElement("afterEnd", n);
+            n.appendChild(s);
+            n.style.marginLeft = "0.42in";
+            e = n;
+            pos = e.innerText.indexOf("\n");
+          }
+          var count = (par.children.length);
+          for (var i = 0; i < count; i++) {
+            e = par.children(i);
+            if (e.tagName == "PRE") {
+              pos = e.innerText.indexOf(">");
+              if (pos != 0) {
+                n = document.createElement("DD");
+                e.insertAdjacentElement("afterEnd", n);
+                n.innerText = e.innerText;
+                e.removeNode(true);
+              }
+            }
+          }
+          if (par.children.tags("PRE").length > 0) {
+            count = (par.children.length);
+            for (i = 0; i < count; i++) {
+              e = par.children(i);
+              if (e.tagName == "PRE") {
+                e.id = "";
+                if (i < (count-1)) {
+                  var e2 = par.children(i + 1);
+                  if (e2.tagName == "PRE") {
+                    e.insertAdjacentText("beforeEnd", e2.innerText+"\n");
+                    e2.removeNode(true);
+                    count = count-1;
+                    i = i-1;
+                  }
+                }
+              }
+            }
+          }
+        }
+        else {
+          n = document.createElement("DD");
+          par.appendChild(n);
+          n.innerText = e.innerText;
+          e.removeNode(true);
+        }
+      }
+
+    --></SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" ONCONTEXTMENU="return true">
+<FONT COLOR="00008B" SIZE="2" FACE="Verdana">
+<A name="Top" />
+<TABLE COLS="2" WIDTH="100%" BGCOLOR="#CCFFCC" CELLPADDING="11" BORDER="0" CELLSPACING="0">
+<TR ALIGN="center" VALIGN="center">
+<TD COLSPAN="2">
+<FONT COLOR="#006400" FACE="Verdana" SIZE="4">
+<B>New York City ZIP Code Tabulation Areas (ZCTA5)</B>
+</FONT>
+</TD>
+</TR>
+<TR ALIGN="left" VALIGN="top">
+<TD>
+<FONT COLOR="#006400" FACE="Verdana" SIZE="2">
+<P><B>Coordinate system:</B>
+Lambert Conformal Conic
+
+</P>
+<P><B>Theme keywords:</B>
+boundaries, society, Zip codes, Census</P>
+</FONT>
+</TD>
+</TR>
+<TR>
+<TD COLSPAN="2">
+<FONT COLOR="#006400" FACE="Verdana" SIZE="2">
+<B>Abstract:</B>
+New York City ZIP Code Tabulation Areas (ZCTA5) is a polygon theme representing zip code areas in New York City.<BR /><BR />
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<H3>FGDC and ESRI Metadata:</H3>
+<UL>
+<LI><A HREF="#Identification_Information">Identification Information</A></LI>
+<LI><A HREF="#Data_Quality_Information">Data Quality Information</A></LI>
+<LI><A HREF="#Spatial_Data_Organization_Information">Spatial Data Organization Information</A></LI>
+<LI><A HREF="#Spatial_Reference_Information">Spatial Reference Information</A></LI>
+<LI><A HREF="#Entity_and_Attribute_Information">Entity and Attribute Information</A></LI>
+<LI><A HREF="#209991552">
+
+            Distribution Information
+          </A></LI>
+<LI><A HREF="#Metadata_Reference_Information">Metadata Reference Information</A></LI>
+</UL>
+<BLOCKQUOTE><FONT SIZE="1">
+      Metadata elements shown with blue text are defined in the
+      Federal Geographic Data Committee's (FGDC) <A TARGET="viewer" HREF="http://www.fgdc.gov/metadata/csdgm/index_html">
+<I>Content Standard for Digital Geospatial Metadata (CSDGM)</I></A>.
+      Elements shown with <FONT color="#006400">green</FONT>
+      text are defined in the <A TARGET="viewer" HREF="http://www.esri.com/metadata/esriprof80.html">
+<I>ESRI Profile of the CSDGM</I>.</A>
+      Elements shown with a green asterisk (<FONT color="#006400">*</FONT>)
+      will be automatically updated by ArcCatalog.
+      ArcCatalog adds hints indicating which FGDC elements are mandatory; 
+      these are shown with <FONT color="#999999">gray</FONT> text.
+    </FONT></BLOCKQUOTE>
+<A name="Identification_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Identification Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Citation:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Citation information:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Originators:</B></FONT>
+U.S. Department of Commerce, U.S. Census Bureau, Geography Division</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Title:</B></FONT></DT>
+<DD>New York City ZIP Code Tabulation Areas (ZCTA5)</DD>
+<BR /><BR /><DT>
+<FONT color="#0000AA"><B>Publication date:</B></FONT>
+2008</DT>
+<DT><FONT color="#0000AA"><B>Edition:</B></FONT>
+2008</DT>
+<DT><FONT color="#0000AA"><B>Geospatial data presentation form:</B></FONT>
+vector digital data</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Online linkage:</B></FONT>
+<A TARGET="viewer" HREF="http://www.columbia.edu/acis/eds/gis/images/nyc_zipcta.zip">
+http://www.columbia.edu/acis/eds/gis/images/nyc_zipcta.zip</A>
+</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Description:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Abstract:</B></FONT></DT>
+<PRE ID="original">New York City ZIP Code Tabulation Areas (ZCTA5) is a polygon theme representing zip code areas in New York City.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV><BR />
+<DIV>
+<DT><FONT color="#0000AA"><B>Purpose:</B></FONT></DT>
+<PRE ID="original">In order for others to use the information in the Census MAF/TIGER database in a geographic information system (GIS) or for other geographic applications, the Census Bureau releases to the public extracts of the database in the form of TIGER/Line Shapefiles.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV><BR />
+<DIV>
+<DT><FONT color="#0000AA"><B>Supplemental information:</B></FONT></DT>
+<PRE ID="original">The TIGER/Line Shapefiles are an extract of selected geographic and cartographic information from the Census MAF/TIGER database.  The Census MAF/TIGER database represents a seamless national file with no overlaps or gaps between parts.  However, each TIGER/Line Shapefile is designed to stand alone as an independent data set or the shapefiles can be combined to cover the whole nation.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV><BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Time period of content:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Time period information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Range of dates/times:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Beginning date:</B></FONT>
+200801</DT>
+<DT><FONT color="#0000AA"><B>Ending date:</B></FONT>
+200807</DT>
+</DL>
+</DD>
+</DL>
+</DD>
+<BR />
+<DIV>
+<DT><FONT color="#0000AA"><B>Currentness reference:</B></FONT></DT>
+<PRE ID="original">publication date</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV><BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Status:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Progress:</B></FONT>
+Complete</DT>
+<DT>
+<FONT color="#0000AA"><B>Maintenance and update frequency:</B></FONT>
+TIGER/Line Shapefiles are extracted from the Census MAF/TIGER database.  No changes or updates will be made to this version of the TIGER/Line Shapefiles.  Future releases of TIGER/Line Shapefiles will reflect updates made to the Census MAF/TIGER database.</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Spatial domain:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Bounding coordinates:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>West bounding coordinate:</B></FONT>
+-74.257463</DT>
+<DT><FONT color="#0000AA"><B>East bounding coordinate:</B></FONT>
+-73.699480</DT>
+<DT><FONT color="#0000AA"><B>North bounding coordinate:</B></FONT>
+40.915317</DT>
+<DT><FONT color="#0000AA"><B>South bounding coordinate:</B></FONT>
+40.495805</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Keywords:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Theme:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Theme keywords:</B></FONT>
+boundaries, society</DT>
+<DT>
+<FONT color="#0000AA"><B>Theme keyword thesaurus:</B></FONT>
+ISO 19115 Topic Categories</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Theme:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Theme keywords:</B></FONT>
+Zip codes, Census</DT>
+<DT>
+<FONT color="#0000AA"><B>Theme keyword thesaurus:</B></FONT>
+None</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Place:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Place keywords:</B></FONT>
+New York (N.Y.), Brooklyn (New York, N.Y.), Bronx (New York, N.Y.), Queens (New York, N.Y.), Manhattan (New York, N.Y.), Staten Island (New York, N.Y.)</DT>
+<DT><FONT color="#0000AA"><B>Place keyword thesaurus:</B></FONT>
+Library of Congress Subject Headings</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Place:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Place keywords:</B></FONT>
+NYC</DT>
+<DT><FONT color="#0000AA"><B>Place keyword thesaurus:</B></FONT>
+None</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Temporal:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Temporal keywords:</B></FONT>
+2008</DT>
+<DT><FONT color="#0000AA"><B>Temporal keyword thesaurus:</B></FONT>
+None</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Access constraints:</B></FONT>
+None</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Use constraints:</B></FONT></DT>
+<PRE ID="original">The TIGER/Line Shapefile products are not copyrighted however TIGER/Line and Census TIGER are registered trademarks of the U.S. Census Bureau.  These products are free to use in a product or publication, however acknowledgement must be given to the U.S. Census Bureau as the source.
+The boundary information in the TIGER/Line Shapefiles are for statistical data collection and tabulation purposes only; their depiction and designation for statistical purposes does not constitute a determination of jurisdictional authority or rights of ownership or entitlement and they are not legal land descriptions. Coordinates in the TIGER/Line shapefiles have six implied decimal places, but the positional accuracy of these coordinates is not as great as the six decimal places suggest.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Point of contact:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact organization primary:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Contact organization:</B></FONT>
+U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Products Branch</DT>
+</DL>
+</DD>
+<BR /><DT><FONT color="#0000AA"><B>Contact address:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Address type:</B></FONT>
+Mailing address</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Address:</B></FONT></DT>
+<PRE ID="original">4600 Silver Hill Road, Stop 7400</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DT>
+<FONT color="#0000AA"><B>City:</B></FONT>
+Washington</DT>
+<DT>
+<FONT color="#0000AA"><B>State or province:</B></FONT>
+DC</DT>
+<DT>
+<FONT color="#0000AA"><B>Postal code:</B></FONT>
+20233-7400</DT>
+<DT><FONT color="#0000AA"><B>Country:</B></FONT>
+United States</DT>
+</DL>
+</DD>
+<BR />
+<DT>
+<FONT color="#0000AA"><B>Contact voice telephone:</B></FONT>
+301-763-1128</DT>
+<DT><FONT color="#0000AA"><B>Contact facsimile telephone:</B></FONT>
+301-763-4710</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Contact electronic mail address:</B></FONT>
+tiger@census.gov</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Browse graphic:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Browse graphic file name:</B></FONT>
+<A TARGET="viewer" HREF="http://www.columbia.edu/acis/eds/gis/pix/cat/nyc_zipcta.jpg">
+http://www.columbia.edu/acis/eds/gis/pix/cat/nyc_zipcta.jpg</A>
+</DT>
+<DT><FONT color="#0000AA"><B>Browse graphic file description:</B></FONT></DT>
+<DD>Thumbnail</DD>
+<DT><FONT color="#0000AA"><B>Browse graphic file type:</B></FONT>
+JPEG</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Native data set environment:</B></FONT></DT>
+<DD>Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.1850</DD>
+<BR /><BR /></DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Data_Quality_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Data Quality Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute accuracy:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute accuracy report:</B></FONT></DT>
+<PRE ID="original">Accurate against Federal Information Processing Standards (FIPS), FIPS Publication 6-4, and FIPS-55 at the 100% level for the codes and base names.  The remaining attribute information has been examined but has not been fully tested for accuracy.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+</DL>
+</DD>
+<DIV>
+<DT><FONT color="#0000AA"><B>Logical consistency report:</B></FONT></DT>
+<PRE ID="original">The Census Bureau performed automated tests to ensure logical consistency and limits of shapefiles.  Segments making up the outer and inner boundaries of a polygon tie end-to-end to completely enclose the area.  All polygons are tested for closure.
+The Census Bureau uses its internally developed geographic update system to enhance and modify spatial and attribute data in the Census MAF/TIGER database.  Standard geographic codes, such as FIPS codes for states, counties, municipalities, county subdivisions, places, American Indian/Alaska Native/Native Hawaiian areas, and congressional districts are used when encoding spatial entities.  The Census Bureau performed spatial data tests for logical consistency of the codes during the compilation of the original Census MAF/TIGER database files.  Most of the codes for geographic entities except states, counties, urban areas, Core Based Statistical Areas (CBSAs), American Indian Areas (AIAs), and congressional districts were provided to the Census Bureau by the USGS, the agency responsible for maintaining FIPS 55.  Feature attribute information has been examined but has not been fully tested for consistency.
+For the TIGER/Line Shapefiles, the Point and Vector Object Count for the G-polygon SDTS Point and Vector Object Type reflects the number of records in the shapefile attribute table.  For multi-polygon features, only one attribute record exists for each multi-polygon rather than one attribute record per individual G-polygon component of the multi-polygon feature.  TIGER/Line Shapefile multi-polygons are an exception to the G-polygon object type classification.  Therefore, when multi-polygons exist in a shapefile, the object count will be less than the actual number of G-polygons.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DIV>
+<DT><FONT color="#0000AA"><B>Completeness report:</B></FONT></DT>
+<PRE ID="original">Data completeness of the TIGER/Line Shapefiles reflects the contents of the Census MAF/TIGER database at the time the TIGER/Line Shapefiles were created.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Lineage:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Source information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Source citation:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Citation information:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Originators:</B></FONT>
+U.S. Department of Commerce, U.S. Census Bureau, Geography Division</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Title:</B></FONT></DT>
+<DD>Census MAF/TIGER database</DD>
+<BR /><BR /><DT>
+<FONT color="#0000AA"><B>Publication date:</B></FONT>
+Unpublished material</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Type of source media:</B></FONT>
+online</DT>
+<DT><FONT color="#0000AA"><B>Source citation abbreviation:</B></FONT></DT>
+<DD>MAF/TIGER</DD>
+<DIV>
+<DT><FONT color="#0000AA"><B>Source contribution:</B></FONT></DT>
+<PRE ID="original">The selected geographic and cartographic information (line segments) are derived from the U.S. Census Bureau's Master Address File Topologically Integrated Geographic Encoding and Referencing (MAF/TIGER) database.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Source time period of content:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Time period information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Range of dates/times:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Beginning date:</B></FONT>
+200801</DT>
+<DT><FONT color="#0000AA"><B>Ending date:</B></FONT>
+200807</DT>
+</DL>
+</DD>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Source currentness reference:</B></FONT></DT>
+<DD>publication date</DD>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Source information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Source citation:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Citation information:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Originators:</B></FONT>
+New York City Department of City Planning</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Title:</B></FONT></DT>
+<DD>New York City Borough Boundaries</DD>
+<BR /><BR /><DT>
+<FONT color="#0000AA"><B>Publication date:</B></FONT>
+2009</DT>
+<DT><FONT color="#0000AA"><B>Geospatial data presentation form:</B></FONT>
+vector digital data</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Series information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Series name:</B></FONT>
+BYTES of the BIG APPLE</DT>
+<DT><FONT color="#0000AA"><B>Issue identification:</B></FONT>
+09A</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Publication information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Publisher:</B></FONT>
+: City of New York Department of City Planning</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Type of source media:</B></FONT>
+online</DT>
+<DT><FONT color="#0000AA"><B>Source citation abbreviation:</B></FONT></DT>
+<DD>Bytes Borough Boundaries</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Source time period of content:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Time period information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Single date/time:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Calendar date:</B></FONT>
+2009</DT>
+</DL>
+</DD>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Source currentness reference:</B></FONT></DT>
+<DD>publication date</DD>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Process step:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Process description:</B></FONT></DT>
+<PRE ID="original">TIGER/Line Shapefiles are extracted from the Census MAF/TIGER database by nation, state, county, and entity.  Census MAF/TIGER data for the nation, state, county, and entity are then distributed among 58 shapefiles each containing attributes for line, polygon, or landmark geographic data.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Process date:</B></FONT>
+2008</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Source used citation abbreviation:</B></FONT></DT>
+<DD>Census MAF/TIGER</DD>
+<BR /><BR /></DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Process step:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Process description:</B></FONT></DT>
+<PRE ID="original">The following steps were done by EDS staff : The PUMA boundaries were clipped to by the borough boundaries.  The dataset was projected to State Plane.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Process date:</B></FONT>
+20090724</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Source used citation abbreviation:</B></FONT></DT>
+<DD>Bytes Borough Boundaries</DD>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Spatial_Data_Organization_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Spatial Data Organization Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Indirect spatial reference method:</B></FONT></DT>
+<DD>Federal Information Processing Standards (FIPS), ANSI, and feature names.</DD>
+<BR /><BR />
+<DT><FONT color="#0000AA"><B>Direct spatial reference method:</B></FONT>
+Vector</DT>
+<BR /><BR />
+<DT><FONT color="#0000AA"><B>Point and vector object information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>SDTS terms description:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>SDTS point and vector object type:</B></FONT>
+G-polygon</DT>
+<DT><FONT color="#0000AA"><B>Point and vector object count:</B></FONT>
+32038</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Spatial_Reference_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Spatial Reference Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Horizontal coordinate system definition:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Planar:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Map projection:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Map projection name:</B></FONT>
+Lambert Conformal Conic</DT>
+<DT><FONT color="#0000AA"><B>Lambert conformal conic:</B></FONT></DT>
+<DL><DT><FONT color="#0000AA"><B>Standard parallel:</B></FONT>
+40.666667</DT>
+<DT><FONT color="#0000AA"><B>Standard parallel:</B></FONT>
+41.033333</DT>
+<DT><FONT color="#0000AA"><B>Longitude of central meridian:</B></FONT>
+-74.000000</DT>
+<DT><FONT color="#0000AA"><B>Latitude of projection origin:</B></FONT>
+40.166667</DT>
+<DT><FONT color="#0000AA"><B>False easting:</B></FONT>
+984250.000000</DT>
+<DT><FONT color="#0000AA"><B>False northing:</B></FONT>
+0.000000</DT>
+</DL>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Planar coordinate information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Planar coordinate encoding method:</B></FONT>
+coordinate pair</DT>
+<DT><FONT color="#0000AA"><B>Coordinate representation:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Abscissa resolution:</B></FONT>
+0.000000</DT>
+<DT><FONT color="#0000AA"><B>Ordinate resolution:</B></FONT>
+0.000000</DT>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Planar distance units:</B></FONT>
+survey feet</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Geodetic model:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Horizontal datum name:</B></FONT>
+North American Datum of 1983 in the 48 contiguous states, the District of Columbia, Alaska, Hawaii, Puerto Rico, the Virgin Islands of the United States, and the Pacific Island Areas.</DT>
+<DT><FONT color="#0000AA"><B>Ellipsoid name:</B></FONT>
+Geodetic Reference System 80</DT>
+<DT><FONT color="#0000AA"><B>Semi-major axis:</B></FONT>
+6378137</DT>
+<DT><FONT color="#0000AA"><B>Denominator of flattening ratio:</B></FONT>
+298257</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Entity_and_Attribute_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Entity and Attribute Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Detailed description:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Entity type:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Entity type label:</B></FONT>
+ZCTA500.shp</DT>
+<DT><FONT color="#0000AA"><B>Entity type definition:</B></FONT></DT>
+<DD>Census 2000 5-digit ZIP Code Tabulation Area</DD>
+<DT><FONT color="#0000AA"><B>Entity type definition source:</B></FONT></DT>
+<DD>U.S. Census Bureau</DD>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+FID</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Internal feature number.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">ESRI</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Attribute domain values:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Unrepresentable domain:</B></FONT></DT>
+<DD>Sequential unique whole numbers that are automatically generated.</DD>
+<BR /><BR />
+</DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+Shape</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Feature geometry.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">ESRI</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Attribute domain values:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Unrepresentable domain:</B></FONT></DT>
+<DD>Coordinates defining the features.</DD>
+<BR /><BR />
+</DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+ZCTA5CE00</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Census 2000 5-digit ZIP Code Tabulation Area code</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Attribute domain values:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain value:</B></FONT>
+00401 to 99950</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition:</B></FONT></DT>
+<PRE ID="original">Five-digit ZIP code</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Enumerated domain:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain value:</B></FONT>
+004HH to 999HH</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition:</B></FONT></DT>
+<PRE ID="original">Five-digit ZIP code unassigned (water only)</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Enumerated domain:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain value:</B></FONT>
+004XX to 999XX</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition:</B></FONT></DT>
+<PRE ID="original">Five-digit ZIP code unassigned (land only)</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+CLASSFP00</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Census 2000 Federal Information Processing Standards (FIPS) 55 class code</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Attribute domain values:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain value:</B></FONT>
+B5</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition:</B></FONT></DT>
+<PRE ID="original">Five-digit ZCTA</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+MTFCC00</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">MAF/TIGER feature class code</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Attribute domain values:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain value:</B></FONT>
+G6350</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition:</B></FONT></DT>
+<PRE ID="original">ZIP Code Tabulation Area (5-digit)</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+FUNCSTAT00</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Census 2000 functional status</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Attribute domain values:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Enumerated domain value:</B></FONT>
+S</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition:</B></FONT></DT>
+<PRE ID="original">Statistical entity</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Enumerated domain value definition source:</B></FONT></DT>
+<PRE ID="original">U.S. Census Bureau</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A NAME="209991552">
+<HR />
+</A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Distribution Information:</B></FONT>
+</DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Distributor:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact organization primary:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Contact organization:</B></FONT>
+U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Products Branch</DT>
+</DL>
+</DD>
+<BR /><DT><FONT color="#0000AA"><B>Contact address:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Address type:</B></FONT>
+Mailing address</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Address:</B></FONT></DT>
+<PRE ID="original">4600 Silver Hill Road, Stop 7400</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DT>
+<FONT color="#0000AA"><B>City:</B></FONT>
+Washington</DT>
+<DT>
+<FONT color="#0000AA"><B>State or province:</B></FONT>
+DC</DT>
+<DT>
+<FONT color="#0000AA"><B>Postal code:</B></FONT>
+20233-7400</DT>
+<DT><FONT color="#0000AA"><B>Country:</B></FONT>
+United States</DT>
+</DL>
+</DD>
+<BR />
+<DT>
+<FONT color="#0000AA"><B>Contact voice telephone:</B></FONT>
+301-763-1128</DT>
+<DT><FONT color="#0000AA"><B>Contact facsimile telephone:</B></FONT>
+301-763-4710</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Contact electronic mail address:</B></FONT>
+tiger@census.gov</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Resource description:</B></FONT>
+Census_2008_nyc_zipcta</DT>
+<BR /><BR />
+<DIV>
+<DT><FONT color="#0000AA"><B>Distribution liability:</B></FONT></DT>
+<PRE ID="original">No warranty, expressed or implied is made with regard to the accuracy of these data, and no liability is assumed by the U.S. Government in general or the U.S. Census Bureau in specific as to the spatial or attribute accuracy of the data.  The act of distribution shall not constitute any such warranty and no responsibility is assumed by the U.S. government in the use of these files.  The boundary information in the TIGER/Line Shapefiles is for statistical data collection and tabulation purposes only; their depiction and designation for statistical purposes do not constitute a determination of jurisdictional authority or rights of ownership or entitlement and they are not legal land descriptions.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Standard order process:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Digital form:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Digital transfer information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Format name:</B></FONT>
+Shapefile</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Format specification:</B></FONT></DT>
+<PRE ID="original">zip</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DT><FONT color="#0000AA"><B>Transfer size:</B></FONT>
+0.373</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Digital transfer option:</B></FONT></DT>
+<DD>
+<DL>
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Metadata_Reference_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Metadata Reference Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Metadata date:</B></FONT>
+20090804</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Metadata contact:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact organization primary:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Contact person:</B></FONT>
+GIS/Metadata Librarian</DT>
+<DT>
+<FONT color="#0000AA"><B>Contact organization:</B></FONT>
+Electronic Data Service (EDS), Columbia University Libraries</DT>
+</DL>
+</DD>
+<BR /><DT><FONT color="#0000AA"><B>Contact address:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Address type:</B></FONT>
+mailing address</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Address:</B></FONT></DT>
+<PRE ID="original">420 W. 118th St.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DT>
+<FONT color="#0000AA"><B>City:</B></FONT>
+New York</DT>
+<DT>
+<FONT color="#0000AA"><B>State or province:</B></FONT>
+NY</DT>
+<DT>
+<FONT color="#0000AA"><B>Postal code:</B></FONT>
+10027</DT>
+<DT><FONT color="#0000AA"><B>Country:</B></FONT>
+United States</DT>
+</DL>
+</DD>
+<BR />
+<DT>
+<FONT color="#0000AA"><B>Contact voice telephone:</B></FONT>
+(212)854-6012</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Contact electronic mail address:</B></FONT>
+eds@columbia.edu</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Metadata standard name:</B></FONT>
+FGDC Content Standards for Digital Geospatial Metadata</DT>
+<DT><FONT color="#0000AA"><B>Metadata standard version:</B></FONT>
+FGDC-STD-001-1998</DT>
+<DT><FONT color="#0000AA"><B>Metadata time convention:</B></FONT>
+local time</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+</FONT>
+</BODY>
+</HTML>
+ 

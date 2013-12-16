@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+    html, body, #map-canvas { 
+      height: 100%; 
+      width: 100%;
+      margin: 0;
+      padding: 0
+      }
+      #map-canvas {
+      width:1200px;
+      height:600px;
+      position: absolute;
+      top: 150px;
+      right: 100px;
+      }
+      iframe {
+      width:1200px;
+      height:600px;
+      position: absolute;
+      top: 750px;
+      right: 100px;
+      }
+    </style>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjbyat_pYIZNaobchNl1vobiiBRwfozGw&sensor=false">
+    </script>
+
+    <script type="text/javascript">
+      // Initialize Map Here
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(40.700,-73.9400),
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+          layer = new google.maps.FusionTablesLayer({
+            query: {
+            select: 'Shape',
+            from: '1231298'
+            }
+            });
+          layer.setMap(map);
+        }
+      };
+
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      }
+
+      // function showValue(newValue)
+      // {
+      //   document.getElementById("range").innerHTML=newValue;
+      //    layer.setOptions({query:{
+      //       select: 'Shape',
+      //       from: '1231298',
+      //       where:"'2010'>" + newValue
+      //     }}
+      //   );
+      // }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+      
+    </script>
+  </head>
+  <body>
+
+  <div id="map-canvas" />
+
+  <!--     <iframe src="https://www.google.com/fusiontables/embedviz?q=select+col0+from+1h6KB4isFOPlti3aSsxQUxM1v3GdDorFpj6Mrs1c&amp;viz=MAP&amp;h=false&amp;lat=40.73844565530461&amp;lng=-73.95242245675001&amp;t=1&amp;z=11&amp;l=col0"></iframe> -->
+  </body>
+</html>

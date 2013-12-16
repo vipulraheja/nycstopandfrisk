@@ -1,0 +1,715 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JScript"><!--
+
+function test() {
+  var ua = window.navigator.userAgent
+  var msie = ua.indexOf ( "MSIE " )
+  if ( msie == -1 ) 
+    document.write("<P>" + "Netscape")
+}
+
+      function fix(e) {
+        var par = e.parentNode;
+        e.id = "";
+        e.style.marginLeft = "0.42in";
+        var pos = e.innerText.indexOf("\n");
+        if (pos > 0) {
+          while (pos > 0) {
+            var t = e.childNodes(0);
+            var n = document.createElement("PRE");
+            var s = t.splitText(pos);
+            e.insertAdjacentElement("afterEnd", n);
+            n.appendChild(s);
+            n.style.marginLeft = "0.42in";
+            e = n;
+            pos = e.innerText.indexOf("\n");
+          }
+          var count = (par.children.length);
+          for (var i = 0; i < count; i++) {
+            e = par.children(i);
+            if (e.tagName == "PRE") {
+              pos = e.innerText.indexOf(">");
+              if (pos != 0) {
+                n = document.createElement("DD");
+                e.insertAdjacentElement("afterEnd", n);
+                n.innerText = e.innerText;
+                e.removeNode(true);
+              }
+            }
+          }
+          if (par.children.tags("PRE").length > 0) {
+            count = (par.children.length);
+            for (i = 0; i < count; i++) {
+              e = par.children(i);
+              if (e.tagName == "PRE") {
+                e.id = "";
+                if (i < (count-1)) {
+                  var e2 = par.children(i + 1);
+                  if (e2.tagName == "PRE") {
+                    e.insertAdjacentText("beforeEnd", e2.innerText+"\n");
+                    e2.removeNode(true);
+                    count = count-1;
+                    i = i-1;
+                  }
+                }
+              }
+            }
+          }
+        }
+        else {
+          n = document.createElement("DD");
+          par.appendChild(n);
+          n.innerText = e.innerText;
+          e.removeNode(true);
+        }
+      }
+
+    --></SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" ONCONTEXTMENU="return true">
+<FONT COLOR="00008B" SIZE="2" FACE="Verdana">
+<A name="Top" />
+<TABLE COLS="2" WIDTH="100%" BGCOLOR="#CCFFCC" CELLPADDING="11" BORDER="0" CELLSPACING="0">
+<TR ALIGN="center" VALIGN="center">
+<TD COLSPAN="2">
+<FONT COLOR="#006400" FACE="Verdana" SIZE="4">
+<B>New York City Sub-borough Area</B>
+</FONT>
+</TD>
+</TR>
+<TR ALIGN="left" VALIGN="top">
+<TD>
+<FONT COLOR="#006400" FACE="Verdana" SIZE="2">
+<P><B>Coordinate system:</B>
+Lambert Conformal Conic
+
+</P>
+<P><B>Theme keywords:</B>
+Sub-borough boundary, New York City Housing and Vacancy Survey, Boundaries</P>
+</FONT>
+</TD>
+</TR>
+<TR>
+<TD COLSPAN="2">
+<FONT COLOR="#006400" FACE="Verdana" SIZE="2">
+<B>Abstract:</B>
+All sub-borough areas for the five boroughs of New York City with names and codes matching definitions from the US Census.<BR /><BR />
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<H3>FGDC and ESRI Metadata:</H3>
+<UL>
+<LI><A HREF="#Identification_Information">Identification Information</A></LI>
+<LI><A HREF="#Data_Quality_Information">Data Quality Information</A></LI>
+<LI><A HREF="#Spatial_Data_Organization_Information">Spatial Data Organization Information</A></LI>
+<LI><A HREF="#Spatial_Reference_Information">Spatial Reference Information</A></LI>
+<LI><A HREF="#Entity_and_Attribute_Information">Entity and Attribute Information</A></LI>
+<LI><A HREF="#215836576">
+
+            Distribution Information
+          </A></LI>
+<LI><A HREF="#Metadata_Reference_Information">Metadata Reference Information</A></LI>
+</UL>
+<BLOCKQUOTE><FONT SIZE="1">
+      Metadata elements shown with blue text are defined in the
+      Federal Geographic Data Committee's (FGDC) <A TARGET="viewer" HREF="http://www.fgdc.gov/metadata/contstan.html">
+<I>Content Standard for Digital Geospatial Metadata (CSDGM)</I></A>.
+      Elements shown with <FONT color="#006400">green</FONT>
+      text are defined in the <A TARGET="viewer" HREF="http://www.esri.com/metadata/esriprof80.html">
+<I>ESRI Profile of the CSDGM</I>.</A>
+      Elements shown with a green asterisk (<FONT color="#006400">*</FONT>)
+      will be automatically updated by ArcCatalog.
+      ArcCatalog adds hints indicating which FGDC elements are mandatory; 
+      these are shown with <FONT color="#999999">gray</FONT> text.
+    </FONT></BLOCKQUOTE>
+<A name="Identification_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Identification Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Citation:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Citation information:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Originators:</B></FONT>
+Electronic Data Services (EDS), Columbia University Libraries</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Title:</B></FONT></DT>
+<DD>New York City Sub-borough Area</DD>
+<BR /><BR /><DT>
+<FONT color="#0000AA"><B>Publication date:</B></FONT>
+2004</DT>
+<DT><FONT color="#0000AA"><B>Geospatial data presentation form:</B></FONT>
+vector digital data</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Online linkage:</B></FONT>
+<A TARGET="viewer" HREF="http://www.columbia.edu/acis/eds/gis/images/NYC_Sub_borough_Area.zip">
+http://www.columbia.edu/acis/eds/gis/images/NYC_Sub_borough_Area.zip</A>
+</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Description:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Abstract:</B></FONT></DT>
+<PRE ID="original">All sub-borough areas for the five boroughs of New York City with names and codes matching definitions from the US Census.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV><BR />
+<DIV>
+<DT><FONT color="#0000AA"><B>Purpose:</B></FONT></DT>
+<PRE ID="original">For use in conjunction with data from the New York Housing and Vacancy Survey</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV><BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Time period of content:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Time period information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Single date/time:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Calendar date:</B></FONT>
+2004</DT>
+</DL>
+</DD>
+</DL>
+</DD>
+<BR />
+<DIV>
+<DT><FONT color="#0000AA"><B>Currentness reference:</B></FONT></DT>
+<PRE ID="original">2002</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV><BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Status:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Progress:</B></FONT>
+Complete</DT>
+<DT>
+<FONT color="#0000AA"><B>Maintenance and update frequency:</B></FONT>
+None planned</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Spatial domain:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Bounding coordinates:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>West bounding coordinate:</B></FONT>
+-73.933406</DT>
+<DT><FONT color="#0000AA"><B>East bounding coordinate:</B></FONT>
+-73.765101</DT>
+<DT><FONT color="#0000AA"><B>North bounding coordinate:</B></FONT>
+40.915278</DT>
+<DT><FONT color="#0000AA"><B>South bounding coordinate:</B></FONT>
+40.785680</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Keywords:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Theme:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Theme keywords:</B></FONT>
+Sub-borough boundary, New York City Housing and Vacancy Survey</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Theme:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Theme keyword thesaurus:</B></FONT>
+None</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Theme:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Theme keywords:</B></FONT>
+Boundaries</DT>
+<DT>
+<FONT color="#0000AA"><B>Theme keyword thesaurus:</B></FONT>
+ISO 19115 Topic Category</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Place:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Place keywords:</B></FONT>
+New York City</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Place:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Place keyword thesaurus:</B></FONT>
+None</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Access constraints:</B></FONT>
+None</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Use constraints:</B></FONT></DT>
+<PRE ID="original">None</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Point of contact:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact organization primary:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Contact organization:</B></FONT>
+Electronic Data Services (EDS), Columbia University Libraries</DT>
+</DL>
+</DD>
+<BR /></DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Browse graphic:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Browse graphic file name:</B></FONT>
+<A TARGET="viewer" HREF="http://www.columbia.edu/acis/eds/gis/pix/cat/NYC_Sub_borough_Area0.bmp">
+http://www.columbia.edu/acis/eds/gis/pix/cat/NYC_Sub_borough_Area0.bmp</A>
+</DT>
+<DT><FONT color="#0000AA"><B>Browse graphic file description:</B></FONT></DT>
+<DD>Thumbnail image of shapefile in full extent</DD>
+<DT><FONT color="#0000AA"><B>Browse graphic file type:</B></FONT>
+BMP</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Native data set environment:</B></FONT></DT>
+<DD>Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 2; ESRI ArcCatalog 9.1.0.780</DD>
+<BR /><BR /></DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Data_Quality_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Data Quality Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Lineage:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Process step:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Process description:</B></FONT></DT>
+<PRE ID="original">Spatial files were originally obtained from the US Census Bureau's 2000 TIGER/Line tracts for the five boroughs for New York City.  Using definitions from the NYCHVS (http://www.census.gov/hhes/www/housing/nychvs/nychvs.html), tracts were selected, tract boundaries dissolved, and information added manually.
+EDS takes no responsibility for the accuracy of the spatial file.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Process step:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Process description:</B></FONT></DT>
+<PRE ID="original">These features were clipped from the New York State TIGER file.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Process step:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Process description:</B></FONT></DT>
+<PRE ID="original">The dataset projection was updated to the Lambert Conformal Conic projection.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Process date:</B></FONT>
+20070326</DT>
+<BR /><BR /></DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Process step:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Process description:</B></FONT></DT>
+<PRE ID="original">Dataset moved.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Source used citation abbreviation:</B></FONT></DT>
+<DD>E:\work\Files for N drive\new_york\nyc_census\nyc_census_boundaries\NYC_Sub_borough_Area</DD>
+<BR /><BR /></DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Process step:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Process description:</B></FONT></DT>
+<PRE ID="original">Dataset copied.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Source used citation abbreviation:</B></FONT></DT>
+<DD></DD>
+<BR /><BR /></DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Process step:</B></FONT></DT>
+<DD>
+<DL>
+<DIV>
+<DT><FONT color="#0000AA"><B>Process description:</B></FONT></DT>
+<PRE ID="original">The dataset projection was updated to the Lambert Conformal Conic projection.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+<DT><FONT color="#0000AA"><B>Process time:</B></FONT>
+20070327</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Spatial_Data_Organization_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Spatial Data Organization Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Direct spatial reference method:</B></FONT>
+Vector</DT>
+<BR /><BR />
+<DT><FONT color="#0000AA"><B>Point and vector object information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>SDTS terms description:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>SDTS point and vector object type:</B></FONT>
+G-polygon</DT>
+<DT><FONT color="#0000AA"><B>Point and vector object count:</B></FONT>
+55</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Spatial_Reference_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Spatial Reference Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Horizontal coordinate system definition:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Planar:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Map projection:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Map projection name:</B></FONT>
+Lambert Conformal Conic</DT>
+<DT><FONT color="#0000AA"><B>Lambert conformal conic:</B></FONT></DT>
+<DL><DT><FONT color="#0000AA"><B>Standard parallel:</B></FONT>
+40.666667</DT>
+<DT><FONT color="#0000AA"><B>Standard parallel:</B></FONT>
+41.033333</DT>
+<DT><FONT color="#0000AA"><B>Longitude of central meridian:</B></FONT>
+-74.000000</DT>
+<DT><FONT color="#0000AA"><B>Latitude of projection origin:</B></FONT>
+40.166667</DT>
+<DT><FONT color="#0000AA"><B>False easting:</B></FONT>
+984250.000000</DT>
+<DT><FONT color="#0000AA"><B>False northing:</B></FONT>
+0.000000</DT>
+</DL>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Planar coordinate information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Planar coordinate encoding method:</B></FONT>
+coordinate pair</DT>
+<DT><FONT color="#0000AA"><B>Coordinate representation:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Abscissa resolution:</B></FONT>
+0.000256</DT>
+<DT><FONT color="#0000AA"><B>Ordinate resolution:</B></FONT>
+0.000256</DT>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Planar distance units:</B></FONT>
+survey feet</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Geodetic model:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Horizontal datum name:</B></FONT>
+North American Datum of 1983</DT>
+<DT><FONT color="#0000AA"><B>Ellipsoid name:</B></FONT>
+Geodetic Reference System 80</DT>
+<DT><FONT color="#0000AA"><B>Semi-major axis:</B></FONT>
+6378137.000000</DT>
+<DT><FONT color="#0000AA"><B>Denominator of flattening ratio:</B></FONT>
+298.257222</DT>
+</DL>
+</DD>
+<BR />
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Entity_and_Attribute_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Entity and Attribute Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Detailed description:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Entity type:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Entity type label:</B></FONT>
+NYC_Sub_borough_Area_shp</DT>
+</DL>
+</DD>
+<BR />
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+FID</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Internal feature number.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">ESRI</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Attribute domain values:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Unrepresentable domain:</B></FONT></DT>
+<DD>Sequential unique whole numbers that are automatically generated.</DD>
+<BR /><BR />
+</DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+Shape</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Feature geometry.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">ESRI</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /><DT><FONT color="#0000AA"><B>Attribute domain values:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Unrepresentable domain:</B></FONT></DT>
+<DD>Coordinates defining the features.</DD>
+<BR /><BR />
+</DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+bor_subb</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Borough / sub-borough code</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">US Census Bureau - NYCHVS</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /></DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Attribute:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Attribute label:</B></FONT>
+NAME</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition:</B></FONT></DT>
+<PRE ID="original">Sub-borough name</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Attribute definition source:</B></FONT></DT>
+<PRE ID="original">US Census Bureau - NYCHVS</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR /></DL>
+</DD>
+</DL>
+</DD>
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A NAME="215836576">
+<HR />
+</A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Distribution Information:</B></FONT>
+</DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Resource description:</B></FONT>
+CENSUS_2000_032807211977000</DT>
+<BR /><BR />
+</DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+<A name="Metadata_Reference_Information"><HR /></A>
+<DL>
+<DT><FONT color="#0000AA" size="3"><B>Metadata Reference Information:</B></FONT></DT>
+<BR /><BR />
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Metadata date:</B></FONT>
+20070327</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Metadata contact:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact information:</B></FONT></DT>
+<DD>
+<DL>
+<DT><FONT color="#0000AA"><B>Contact organization primary:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Contact person:</B></FONT>
+GIS/Metadata Librarian</DT>
+<DT>
+<FONT color="#0000AA"><B>Contact organization:</B></FONT>
+Electronic Data Service (EDS), Columbia University Libraries</DT>
+</DL>
+</DD>
+<BR /><DT><FONT color="#0000AA"><B>Contact address:</B></FONT></DT>
+<DD>
+<DL>
+<DT>
+<FONT color="#0000AA"><B>Address type:</B></FONT>
+mailing and physical address</DT>
+<DIV>
+<DT><FONT color="#0000AA"><B>Address:</B></FONT></DT>
+<PRE ID="original">420 W. 118th St.</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+<DT><FONT color="#0000AA"><B>Address:</B></FONT></DT>
+<PRE ID="original">215 IAB, MC 3301</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DT>
+<FONT color="#0000AA"><B>City:</B></FONT>
+New York</DT>
+<DT>
+<FONT color="#0000AA"><B>State or province:</B></FONT>
+NY</DT>
+<DT>
+<FONT color="#0000AA"><B>Postal code:</B></FONT>
+10027</DT>
+</DL>
+</DD>
+<BR />
+<DT>
+<FONT color="#0000AA"><B>Contact voice telephone:</B></FONT>
+(212)854-6012</DT>
+<BR /><BR /><DT><FONT color="#0000AA"><B>Contact electronic mail address:</B></FONT>
+eds@columbia.edu</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+</DD>
+<DT><FONT color="#0000AA"><B>Metadata standard name:</B></FONT>
+FGDC Content Standards for Digital Geospatial Metadata</DT>
+<DT><FONT color="#0000AA"><B>Metadata standard version:</B></FONT>
+FGDC-STD-001-1998</DT>
+<DT><FONT color="#0000AA"><B>Metadata time convention:</B></FONT>
+local time</DT>
+<BR /><BR /></DL>
+</DD>
+</DL>
+<A HREF="#Top">Back to Top</A>
+</FONT>
+</BODY>
+</HTML>
+ 

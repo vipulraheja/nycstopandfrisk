@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>STAT4242: Evolution of Crime in NYC</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+
+		<style>
+			html, body { 
+				height: 100%; 
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				color: #afafaf;
+				background-color: #0b0f11;
+			}
+
+			#map-canvas {
+				width:1200px;
+				height:600px;
+				position: absolute;
+				top: 150px;
+				right: 100px;
+			}
+
+			.2007heatmapdiv {
+				position: absolute;
+				width:1200px;
+				height:600px;				
+				top: 150px;
+				right: 100px;
+			}
+
+			.2008heatmapdiv {
+				position: absolute;
+				width:1200px;
+				height:600px;				
+				top: 150px;
+				right: 100px;
+			}
+
+			.2009heatmapdiv {
+				position: absolute;
+				width:1200px;
+				height:600px;				
+				top: 150px;
+				right: 100px;
+			}
+
+			.2010heatmapdiv {
+				position: absolute;
+				width:1200px;
+				height:600px;				
+				top: 150px;
+				right: 100px;
+			}
+
+			.2011heatmapdiv {
+				position: absolute;
+				width:1200px;
+				height:600px;				
+				top: 150px;
+				right: 100px;
+			}
+
+			.lead {
+				margin-bottom:10px;
+				font-size:21px;
+			}
+
+			h1, h2 {
+				font: bold 2.5em "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
+				color: #fff;
+				display: block;
+			}
+
+		</style>
+
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+		<script>
+			var map;
+			function initialize() {
+				var mapOptions = {
+				zoom: 11,
+				center: new google.maps.LatLng(40.700,-73.9400),
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById('map-canvas'),
+				mapOptions);
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+		</script>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+			
+		<script type="text/javascript">
+		    $(document).ready(function(){
+		        $("select").change(function(){
+		            $("select option:selected").each(function(){
+		                if($(this).attr("value")=="2007"){
+		                    $("#2008heatmapdiv").hide();
+		                    $("#2009heatmapdiv").hide();
+		                    $("#2010heatmapdiv").hide();
+		                    $("#2011heatmapdiv").hide();
+//		                    $("#map-canvas").hide();
+		                    $("#2007heatmapdiv").show();
+		                }
+		                if($(this).attr("value")=="2008"){
+		                	$("#2007heatmapdiv").hide();
+		                    $("#2009heatmapdiv").hide();
+		                    $("#2010heatmapdiv").hide();
+		                    $("#2011heatmapdiv").hide();
+//		                    $("#map-canvas").hide();
+		                    $("#2008heatmapdiv").show();
+		                }
+		                if($(this).attr("value")=="2009"){
+		                	$("#2007heatmapdiv").hide();
+		                    $("#2008heatmapdiv").hide();
+		                    $("#2010heatmapdiv").hide();
+		                    $("#2011heatmapdiv").hide();
+//		                    $("#map-canvas").hide();
+		                    $("#2009heatmapdiv").show();
+		                }
+		                if($(this).attr("value")=="2010"){
+		                	$("#2007heatmapdiv").hide();
+		                    $("#2008heatmapdiv").hide();
+		                    $("#2009heatmapdiv").hide();
+		                    $("#2011heatmapdiv").hide();
+//		                    $("#map-canvas").hide();
+		                    $("#2010heatmapdiv").show();
+		                }
+		                if($(this).attr("value")=="2011"){
+		                	$("#2007heatmapdiv").hide();
+		                    $("#2008heatmapdiv").hide();
+		                    $("#2009heatmapdiv").hide();
+		                    $("#2010heatmapdiv").hide();
+//		                    $("#map-canvas").hide();
+		                    $("#2011heatmapdiv").show();
+		                }
+		            });
+		        }).change();
+		    });
+		</script>
+	</head>
+
+	<body>
+		<div class="title">
+			<center>
+    	    <h1>Evolution of crime in NYC</h1>
+       		<p class="lead">~ Fancy tagline ~</p>
+       		</center>
+	    </div>
+
+	    <div>
+	        <select id="years">
+	            <option>Choose Year</option>
+	            <option value="2007">2007</option>
+	            <option value="2008">2008</option>
+				<option value="2009">2009</option>
+	            <option value="2010">2010</option>
+	            <option value="2011">2011</option>
+	        </select>
+	    </div>
+
+		<div id="map-canvas"></div>
+
+		<div id="2007heatmapdiv" style="position:absolute; top:150px; right:100px">
+			<iframe src="https://www.google.com/fusiontables/embedviz?q=select+col0+from+1h6KB4isFOPlti3aSsxQUxM1v3GdDorFpj6Mrs1c&amp;viz=MAP&amp;h=false&amp;lat=40.73844565530461&amp;lng=-73.95242245675001&amp;t=1&amp;z=11&amp;l=col0" style="width:1200px; height:600px"></iframe>
+		</div>
+
+		<div id="2008heatmapdiv" style="position:absolute; top:150px; right:100px">
+			<iframe src="https://www.google.com/fusiontables/embedviz?q=select+col0+from+1h6KB4isFOPlti3aSsxQUxM1v3GdDorFpj6Mrs1c&amp;viz=MAP&amp;h=false&amp;lat=40.73844565530461&amp;lng=-73.95242245675001&amp;t=1&amp;z=11&amp;l=col0" style="width:1200px; height:600px"></iframe>
+		</div>
+
+		<div id="2009heatmapdiv" style="position:absolute; top:150px; right:100px">
+			<iframe src="https://www.google.com/fusiontables/embedviz?q=select+col0+from+1h6KB4isFOPlti3aSsxQUxM1v3GdDorFpj6Mrs1c&amp;viz=MAP&amp;h=false&amp;lat=40.73844565530461&amp;lng=-73.95242245675001&amp;t=1&amp;z=11&amp;l=col0" style="width:1200px; height:600px"></iframe>
+		</div>
+
+		<div id="2010heatmapdiv" style="position:absolute; top:150px; right:100px">
+			<iframe src="https://www.google.com/fusiontables/embedviz?q=select+col0+from+1h6KB4isFOPlti3aSsxQUxM1v3GdDorFpj6Mrs1c&amp;viz=MAP&amp;h=false&amp;lat=40.73844565530461&amp;lng=-73.95242245675001&amp;t=1&amp;z=11&amp;l=col0" style="width:1200px; height:600px"></iframe>
+		</div>
+
+		<div id="2011heatmapdiv" style="position:absolute; top:150px; right:100px">
+			<iframe src="https://www.google.com/fusiontables/embedviz?q=select+col0+from+1h6KB4isFOPlti3aSsxQUxM1v3GdDorFpj6Mrs1c&amp;viz=MAP&amp;h=false&amp;lat=40.73844565530461&amp;lng=-73.95242245675001&amp;t=1&amp;z=11&amp;l=col0" style="width:1200px; height:600px"></iframe>
+		</div>
+	</body>
+</html>

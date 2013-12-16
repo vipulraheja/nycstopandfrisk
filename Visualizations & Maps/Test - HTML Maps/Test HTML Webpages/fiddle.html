@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#map-canvas {
+				width:1200px;
+				height:600px;
+				position: absolute;
+				top: 150px;
+				right: 100px;
+			}
+
+		</style>
+
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+		<script>
+			var map;
+			function initialize() {
+				var mapOptions = {
+				zoom: 11,
+				center: new google.maps.LatLng(40.6700,-73.9400),
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById('map-canvas'),
+				mapOptions);
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+		</script>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+
+			
+		<script type="text/javascript">
+		    $(document).ready(function(){
+		        $("select").change(function(){
+                    $("#2006_sf_edu_bach").hide();
+                    $("#2008_sf_edu_bach").hide();
+                    $("#2006_edu_bach").hide();
+                    $("#2008_edu_bach").hide();
+/*                    $("#2006_sf_edu_hs").hide();
+                	$("#2008_sf_edu_hs").hide();
+					$("#2006_edu_hs").hide();
+                    $("#2008_edu_hs").hide();
+
+                    $("#2006_apartment_rents_count").hide();
+                    $("#2008_apartment_rents_count").hide();
+					$("#2006_apartment_rents_ratio").hide();
+                    $("#2008_apartment_rents_ratio").hide();
+*/
+		            $("select option:selected").each(function(){
+	                    if($(this).attr("value")=="2006_sf_edu_bach"){
+	                    	$("#2006_sf_edu_bach").show();
+	                    }
+
+	                    else if($(this).attr("value")=="2008_sf_edu_bach"){
+	                    	$("#2008_sf_edu_bach").show();
+	                    }
+
+						else if($(this).attr("value")=="2006_edu_bach"){
+                        	$("#2006_edu_bach").show();
+                        }
+
+	                    else if($(this).attr("value")=="2008_edu_bach"){
+	                    	$("#2008_edu_bach").show();
+	                    }
+
+/*	                    else if($(this).attr("value")=="2006_sf_edu_hs"){
+	                    	$("#2006_sf_edu_hs").show();
+	                    }
+
+	                    else if($(this).attr("value")=="2008_sf_edu_hs"){
+	                       	$("#2008_sf_edu_hs").show();
+	                    }
+
+	                    else if($(this).attr("value")=="2006_edu_hs"){
+	                    	$("#2006_edu_hs").show();
+	                    }
+
+	                    else {//($(this).attr("value")=="2008_edu_hs"){
+	                    	$("#2008_edu_hs").show();
+	                    }
+*/		            });
+		        }).change();
+		    });
+
+			function fctCheck(analysis) {
+				console.log(analysis);
+  				var elems = document.getElementsByName("subselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+  				document.getElementById(analysis).style.display = "block";
+
+  				var elems = document.getElementsByName("subsubselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+
+  				var elems = document.getElementsByName("subsubsubselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+
+  				var elems = document.getElementsByName("subsubsubsubselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+  			}
+
+  			function fctCheck_sub(analysis) {
+				console.log(analysis);
+  				var elems = document.getElementsByName("subsubselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+  				document.getElementById(analysis).style.display = "block";
+
+  				var elems = document.getElementsByName("subsubsubselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+
+  				var elems = document.getElementsByName("subsubsubsubselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+				//document.getElementById(analysis).style.display = "block";  				
+  			}
+
+  			function fctCheck_sub_sub(analysis) {
+				console.log(analysis);
+  				var elems = document.getElementsByName("subsubsubselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+  				document.getElementById(analysis).style.display = "block";
+
+  				var elems = document.getElementsByName("subsubsubsubselector");
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+				//document.getElementById(analysis).style.display = "block";  				
+  			}
+
+  			function fctCheck_sub_sub_sub(analysis) {
+				console.log(analysis);
+  				var elems = document.getElementsByName("subsubsubsubselector");
+  				console.log(elems.id)
+  				for (var i = 0; i < elems.length; i++) {
+  					elems.item(i).style.display = "none";
+  				}
+  				document.getElementById(analysis).style.display = "block";  		
+  			}
+
+		</script>
+	</head>
+
+	<body>
+	    <select id="analysis" onchange="fctCheck(this.value);">
+			<option value="">Choose the level of analysis</option>
+			<option value="advanced">Advanced</option>
+		</select>
+
+		<select id="advanced" onchange="fctCheck_sub(this.value);" name="subselector" style="display:none">
+			<option>Choose Factor</option>
+		    <option value="education">Education</option>
+		</select> 
+
+		<select id="education" onchange="fctCheck_sub_sub(this.value);" name="subsubselector" style="display:none">
+            <option>Choose Education</option>
+            <option value="bachelors">Bachelors</option>
+            <!--option value="highschool">No High School</option-->
+        </select>
+
+        <select id="bachelors" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="bachelors_counts">Bachelors Education by Sub-Borough</option>
+            <option value="bachelors_ratio">Stop and Frisk v/s Bachelors Education</option>
+        </select>
+
+        <select id="bachelors_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_edu_bach">2006</option>
+            <option value="2008_edu_bach">2008</option>
+        </select>
+
+         <select id="bachelors_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_edu_bach">2006</option>
+            <option value="2008_sf_edu_bach">2008</option>
+        </select>
+<!--
+        <select id="highschool" onchange="fctCheck_sub_sub_sub(this.value);" name="subsubsubselector" style="display:none">
+            <option>Choose Category</option>
+            <option value="hs_counts">No High School Education by Sub-Borough</option>
+            <option value="hs_ratio">Stop and Frisk v/s No High School Education</option>
+        </select>
+
+		<select id="hs_counts" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_edu_hs">2006</option>
+            <option value="2008_edu_hs">2008</option>
+        </select>
+
+        <select id="hs_ratio" name="subsubsubsubselector" style="display:none">
+            <option>Choose Year</option>
+            <option value="2006_sf_edu_hs">2006</option>
+            <option value="2008_sf_edu_hs">2008</option>
+        </select>
+-->
+		<div id="map-canvas"></div>
+
+
+		<!------------------------------ EDUCATION --------------------------------------->
+		<!------------ BACHELORS ----------->
+		<!-- RATIO EDUCATION BACHELORS 2006 -->
+		<div id="2006_sf_edu_bach" style="position:absolute; top:150px; right:100px; ">
+			<iframe width="1200px" height="600px" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col13+from+1linmULwmrYL3mmfpYiG2CZXQtOgcxctCAIMlhSg&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col13&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+		</div>
+
+		<!-- COUNTS EDUCATION BACHELORS 2006 -->
+		<div id="2006_edu_bach" style="position:absolute; top:150px; right:100px; ">
+			<iframe width="1200px" height="600px" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col13+from+1D_Q46jq5043bYOPvy5RHrx-PDl_N4GZQofQNMow&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col13&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+		</div>
+
+		<!-- RATIO EDUCATION BACHELORS 2008 -->
+		<div id="2008_sf_edu_bach" style="position:absolute; top:150px; right:100px">
+			<iframe width="1200px" height="600px" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col13+from+1WCLPZdEMyNIKkDz97EHK0JHsOxUc3iqEuxzFZg8&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col13&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+		</div>
+
+		<!-- COUNTS EDUCATION BACHELORS 2008 -->
+		<div id="2008_edu_bach" style="position:absolute; top:150px; right:100px">
+			<iframe width="1200px" height="600px" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col13+from+1r5980-pWSHsoD-QnemG_BQfJL4KaGGDpzU7n_2U&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col13&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+		</div>
+
+		<!------------ HIGH SCHOOL ----------->
+		<!-- RATIO EDUCATION HIGH SCHOOL 2006 -->
+<!--		<div id="2006_sf_edu_hs" style="position:absolute; top:150px; right:100px">
+			<iframe width="1200px" height="600px" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+17H2W1DLQ0Mf3h61Y36cDoqMTU3xQ7JtabcTUx8s&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+		</div>
+
+		<!-- COUNTS EDUCATION HIGH SCHOOL 2006 -->
+<!--		<div id="2006_edu_hs" style="position:absolute; top:150px; right:100px; ">
+			<iframe width="1200px" height="600px" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+1ndaNNdtlJvUGURDAifZNLdr8Mv_5LTrdnVHZqJE&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+		</div>
+
+		<!-- RATIO EDUCATION HIGH SCHOOL 2008 -->
+<!--		<div id="2008_sf_edu_hs" style="position:absolute; top:150px; right:100px; ">
+			<iframe width="1200px" height="600px" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+17uqkMJ4nf0BHeUEQ5pLohKmRPFB1zOEjUMcBjiU&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+		</div>
+
+		<!-- COUNTS EDUCATION HIGH SCHOOL 2008 -->
+<!--		<div id="2008_edu_hs" style="position:absolute; top:150px; right:100px; ">
+			<iframe width="1200px" height="600px" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col11+from+1Inx7hjLSFhp4rEt038dDZAP7fBS9e2Z1LUM9aPc&amp;viz=MAP&amp;h=false&amp;lat=40.70602028875271&amp;lng=-73.97775000000001&amp;t=1&amp;z=10&amp;l=col11&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
+		</div> -->
+	</body>
+</html>
